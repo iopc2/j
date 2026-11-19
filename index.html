@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مُفاجأة خاصّة 🎀</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://i.postimg.cc/cCGNyQKx/Tender-Ink-Black-Hair-Romance.png');
+            background-color: #edc0df;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #4a3f4b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .box {
+            background: rgba(255, 255, 255, 0.88);
+            padding: 35px;
+            border-radius: 25px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(206, 156, 214, 0.45);
+            max-width: 420px;
+            width: 90%;
+            border: 3px solid #ce9cd6;
+        }
+        .bow {
+            font-size: 45px;
+            margin-bottom: 5px;
+            animation: bounce 2s infinite;
+        }
+        input {
+            padding: 12px;
+            width: 80%;
+            border-radius: 15px;
+            border: 2px solid #c8bfc9;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            background: #fdf9fc;
+            color: #4a3f4b;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: #ce9cd6;
+            background: #fff;
+        }
+        button {
+            background: linear-gradient(135deg, #ce9cd6, #edc0df);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(206, 156, 214, 0.5);
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(206, 156, 214, 0.7);
+        }
+        #reward-screen {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .trophy {
+            font-size: 65px;
+            margin-bottom: 10px;
+        }
+        h2 { color: #b57bb8; margin-bottom: 10px; }
+        h1 { color: #a864b3; margin-bottom: 15px; }
+        p { line-height: 1.7; font-size: 17px; color: #5a4e5c; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- شاشة كلمة السّرّ -->
+    <div class="box" id="login-screen">
+        <div class="bow">🎀</div>
+        <h2>مكان خاصّ بيكِ.. </h2>
+        <pاكتبي كلمة السّرّ عشان تفتحي الجائزة !:</p>
+        <input type="text" id="pass-input" placeholder="اكتبي الكلمة هنا...">
+        <br>
+        <button onclick="checkPassword()">فتح الجائزة ✨</button>
+        <p id="error-msg" style="color: #c95b8b; font-size: 14px; display: none; margin-top: 10px;">كلمة السّرّ مش صح، حاولي تاني!</p>
+    </div>
+
+    <!-- شاشة الجائزة -->
+    <div class="box" id="reward-screen">
+        <div class="trophy">🧸🎀</div>
+        <h1>[💗]</h1>
+        <p>
+            [كسبتِني يبنت اللعيبة! المرّة دي إنتِ عاقبتِني.. المرّة الجاية هكسبك وهعاقبك، ودي حاجة بسيطة ويا ربّ تعجبك💐😅]
+        </p>
+        <button onclick="fireConfetti()">إحتفال كمان 🎉</button>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const secretWord = "YOUI"; 
+            const userInput = document.getElementById("pass-input").value.trim();
+
+            if (userInput === secretWord) {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("reward-screen").style.display = "block";
+                fireConfetti();
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+
+        function fireConfetti() {
+            confetti({
+                particleCount: 120,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#edc0df', '#ce9cd6', '#c8bfc9', '#ffffff']
+            });
+        }
+    </script>
+
+</body>
+</html>
